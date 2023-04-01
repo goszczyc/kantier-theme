@@ -1,0 +1,184 @@
+.burger {
+    @apply flex
+	justify-center
+	items-center
+	md:hidden
+	w-10
+	h-10
+	bg-none
+	border-none
+	z-[1000];
+
+    &__bar {
+        @apply relative
+		w-10/12
+		h-0.5
+		bg-black
+		transition-colors
+		delay-300;
+
+        &::before,
+        &::after {
+            content: "";
+            @apply absolute
+			left-0
+			-top-3
+			w-full
+			h-full
+			bg-black;
+            transition: top 150ms 150ms, transform 150ms;
+        }
+        &::after {
+            @apply top-3;
+        }
+    }
+
+    &--active {
+        .burger__bar {
+            @apply bg-transparent
+			delay-0;
+            &::before,
+            &::after {
+                @apply top-0
+				rotate-45;
+                transition: top 150ms, transform 150ms 150ms;
+            }
+            &::after {
+                @apply -rotate-45;
+            }
+        }
+    }
+}
+
+.main-menu {
+    @apply hidden
+	font-medium
+	flex-col
+	items-center
+	fixed
+	top-0
+	left-0
+	w-screen
+	h-screen
+	bg-white
+	pt-20
+	z-[100]
+	md:flex
+	md:flex-row
+	md:relative
+	md:pt-0
+	md:w-auto
+	md:h-auto
+	md:bg-transparent;
+
+    &--active {
+        @apply flex;
+    }
+
+    .has-sub {
+        @apply flex items-center justify-center;
+    }
+    &__arrow {
+        @apply inline-block 
+		relative
+		w-5
+		h-8
+		ml-1
+		align-middle
+		transition-transform;
+
+        &::before {
+            content: "";
+            @apply absolute
+			top-1/2
+			left-1/2
+			w-2
+			h-2
+			border-b
+			border-l
+			border-black
+			-translate-x-1/2
+			-translate-y-3/4
+			-rotate-45
+			transition-colors;
+        }
+    }
+    &__item:hover {
+        .main-menu__arrow::before {
+            @apply border-primary;
+        }
+    }
+
+    &__sub-menu {
+        @apply hidden
+		flex-col
+		items-center
+		bg-white
+		z-[1000]
+		overflow-hidden
+		md:absolute
+		md:top-full
+		md:left-1/2
+		md:w-auto
+		md:h-auto
+		md:pt-0
+		md:-translate-x-1/2
+		md:rounded-xl
+		md:shadow-menu;
+
+        &::before {
+            content: "";
+            @apply absolute
+			bottom-full
+			left-1/2
+			-translate-x-1/2
+			border-l-8
+			border-r-8
+			border-b-8
+			border-l-transparent
+			border-r-transparent
+			border-b-white;
+        }
+
+        &--active {
+            @apply flex;
+        }
+        &-exit {
+            @apply absolute
+			top-5
+			right-5
+			h-10
+			w-10;
+
+            &::before,
+            &::after {
+                content: "";
+                @apply absolute
+				top-1/2
+				left-1/2
+				h-0.5
+				w-5/6
+				bg-black
+				-translate-x-1/2
+				-translate-y-1/2
+				rotate-45;
+            }
+            &::after {
+                @apply -rotate-45;
+            }
+        }
+    }
+}
+
+.header {
+    &--scrolled {
+        @apply py-3;
+
+        .logo {
+            max-width: 120px;
+        }
+        .saez {
+            max-width: 100px;
+        }
+    }
+}

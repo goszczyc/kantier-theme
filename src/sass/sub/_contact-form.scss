@@ -1,0 +1,26 @@
+.wpcf7 {
+    form .wpcf7-response-output {
+		margin: 0;
+		margin-top: 2rem;
+    }
+
+    form.sent .wpcf7-response-output {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        min-width: 250px;
+        width: 100%;
+        max-width: 400px;
+        padding: 20px;
+        margin: 0;
+        background-color: #fff;
+        border-radius: 12px;
+        z-index: 1000;
+        box-shadow: 0 0 20px 15px rgba($color: #000000, $alpha: 0.3);
+        animation: close 3000ms forwards;
+
+        &.d-none {
+            display: none;
+        }
+    }
+}

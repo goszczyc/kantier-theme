@@ -1,0 +1,187 @@
+// Font import
+@import url("https://use.typekit.net/jzl8kzs.css");
+
+// Tailwind base
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Set default font
+@layer base {
+    body {
+        @apply bg-white;
+    }
+    b,
+    strong {
+        font-weight: 700;
+    }
+}
+
+@import "./sub/header";
+@import "./sub/contact-form";
+
+.main {
+    overflow: hidden;
+    padding-top: 130px;
+}
+
+.slider-loader {
+    position: relative;
+}
+
+.btn {
+    @apply inline-block
+	px-9 
+	py-4
+	border
+	rounded-full
+	transition-colors
+	duration-300
+	cursor-pointer
+    no-underline;
+
+    &--primary {
+        @apply bg-primary
+		text-white
+		border-primary
+		hover:bg-white
+		hover:text-primary;
+    }
+    &--big-padding {
+        @apply px-9;
+    }
+    &--small-padding {
+        @apply px-4 py-2;
+    }
+}
+
+.pagination {
+    .page-numbers {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        transition: color 150ms;
+        &.next,
+        &.prev {
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+        }
+
+        &:not(.prev, .next) {
+            width: 26px;
+            height: 26px;
+            text-align: center;
+        }
+
+        &:hover {
+            @apply text-primary;
+
+            &.next {
+                span:not(.hidden) {
+                    @apply bg-primary
+					before:border-l-primary;
+                }
+            }
+            &.prev {
+                span:not(.hidden) {
+                    @apply bg-primary
+					before:border-r-primary;
+                }
+            }
+        }
+
+        &.current {
+            @apply text-primary
+			border-primary
+			border
+			rounded-full;
+        }
+
+        &:first-child {
+            margin-right: auto;
+            &:not(.prev) {
+                margin-right: unset;
+                margin-left: auto;
+            }
+        }
+        &:last-child {
+            margin-left: auto;
+            &:not(.next) {
+                margin-left: unset;
+                margin-right: auto;
+            }
+        }
+    }
+}
+
+.focus-border-primary {
+    @apply focus:border-primary;
+}
+
+.contact-acceptance {
+    .wpcf7-list-item {
+        margin: 0;
+    }
+
+    input[type="checkbox"] {
+        @apply hidden;
+
+        & ~ span {
+            @apply text-primary 
+            text-sm
+			relative 
+			pl-8 
+			cursor-pointer 
+			before:absolute 
+			before:left-0 
+			before:top-[10px] 
+			before:w-5 
+			before:h-5 
+			before:border-2 
+			before:border-solid
+			before:border-primary 
+			before:-translate-y-1/2 
+			after:absolute 
+			after:left-[10px] 
+			after:top-[10px] 
+			after:w-3 
+			after:h-2 
+			after:border-l-2 
+			after:border-b-2 
+			after:border-solid
+			after:border-primary 
+			after:-translate-x-1/2 
+			after:-translate-y-3/4 
+			after:-rotate-45 
+			after:invisible;
+        }
+        &:checked ~ span {
+            @apply after:visible;
+        }
+    }
+}
+.wpcf7 {
+    .wpcf7-form-control-wrap {
+        position: unset;
+    }
+    .wpcf7-not-valid-tip {
+        @apply text-xs
+		absolute
+		bottom-0;
+    }
+}
+
+.observe {
+    transition: opacity 500ms 200ms, transform 500ms 200ms;
+
+    &--no-delay {
+        transition-delay: 0;
+    }
+}
+
+.faded-out {
+    transform: translateY(80px);
+    opacity: 0;
+}
